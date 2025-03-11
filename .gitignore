@@ -2,3 +2,4 @@ shared/
 caddy_data/
 caddy_config/
 Caddyfile
+docker-compose.yml
