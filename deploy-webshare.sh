@@ -40,15 +40,7 @@ while true; do
     fi
 done
 
-# Display the generated username and password
-echo "========================================="
-echo " GENERATED CREDENTIALS "
-echo "========================================="
-echo "User: $user Password: $password"
-echo ""
-echo "Generate new hashed passwords:"
-echo "docker run --rm caddy:latest caddy hash-password --plaintext YOUR_PASSWORD"
-echo "========================================="
+
 
 # Generate the hashed password using caddy hash-password inside a temporary container
 hashed_password=$(docker run --rm caddy:latest caddy hash-password --plaintext "$password")
@@ -63,9 +55,10 @@ cat <<EOL > Caddyfile
     root * /srv/shared  # Set server root to the shared folder
     file_server browse  # Enable file browsing in the browser
     basic_auth * {
+        # Configure basic authentication with generated credentials        
+        $user $hashed_password 
         # Generate new password
         # docker run --rm caddy:latest caddy hash-password --plaintext YOUR_PASSWORD
-        $user $hashed_password  # Configure basic authentication with generated credentials
     }
     # tls internal  # Use Caddy's internal TLS for encrypted connections
 }
@@ -91,6 +84,7 @@ services:
       - CADDY_ADMIN_DISABLED=true  # Disable Caddy admin API
 EOL
 
+echo "";
 # Get public IP if available
 public_ip=$(curl -s ifconfig.me)
 if [[ $public_ip =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
@@ -99,10 +93,22 @@ else
     public_ip="Not detected"
 fi
 
-# Final message showing deployment details
+# Display the generated username and password
+echo ""
 echo "========================================="
 echo " CADDY DEPLOYMENT INFORMATION "
 echo "========================================="
+echo " GENERATED CREDENTIALS "
+echo "-----------------------------------------"
+echo "User: $user Password: $password"
+echo ""
+echo "Generate new hashed passwords:"
+echo "docker run --rm caddy:latest caddy hash-password --plaintext YOUR_PASSWORD"
+
+# Final message showing deployment details
+echo "-----------------------------------------"
+echo " CADDY DEPLOYMENT INFORMATION "
+echo "-----------------------------------------"
 echo "Folders created:"
 echo " - shared (Files served by Caddy)"
 echo " - caddy_data (Caddy data)"
@@ -111,9 +117,10 @@ echo " - Caddyfile (your Caddyfile!"
 echo ""
 echo "Copy files to serve into: ./shared"
 echo ""
-echo "The server is configured to listen on port: ${port}"
-echo "You can access it at: http://$public_ip:${port}"
-echo "(If public IP isn't available, use the server's local IP)"
+echo "- The server is configured to listen on port: ${port}"
+echo "- You can access it at: http://$public_ip:${port}"
+echo "- Localhost at: http://127.0.0.1:${port}"
+echo "If public IP isn't available, use the server's local IP)"
 echo ""
 echo "========================================="
 echo "To start the service, run:"
