@@ -1,9 +1,11 @@
-# Caddy Server Deployment Script
+# Web share Server Deployment Script
 
 ## Overview
 
 This script automates the deployment of a simple and easily manageable Caddy server using Docker Compose. 
 It includes dynamically generated credentials for **basic authentication**. You have a ./shared/ place to share your files easy.
+
+> http://<your-host>:portnumber/your-auth-shared
 
 (plug and play in 7 sec!) 
 
