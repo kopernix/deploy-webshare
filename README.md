@@ -1,5 +1,6 @@
 # Web share Server Deployment Script
 
+
 ## Overview
 
 This script automates the deployment of a simple and easily manageable Caddy server using Docker Compose. 
@@ -23,6 +24,7 @@ It includes dynamically generated credentials for **basic authentication**. You 
 ## Usage
 
 ```bash
+git clone git@github.com:kopernix/deploy-webshare.git
 bash deploy-webshare.sh
 ```
 or
