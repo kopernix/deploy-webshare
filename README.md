@@ -1,23 +1,21 @@
-# README.md
+# Caddy Server Deployment Script
 
-## Caddy Server Deployment Script
-
-### Overview
+## Overview
 
 This script automates the deployment of a simple and easily manageable Caddy server using Docker Compose. It includes dynamically generated credentials for basic authentication.
 
-### Features
+## Features
 
 - Easy Docker Compose deployment
 - Access with automatically generated credentials
 - Dynamic port selection
 - Simple file sharing through HTTP
 
-### Requirements
+## Requirements
 
 - Docker and Docker Compose installed
 
-### Usage
+## Usage
 
 ```bash
 bash deploy-fast-webshare.sh
