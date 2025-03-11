@@ -23,13 +23,13 @@ It includes dynamically generated credentials for **basic authentication**. You 
 ## Usage
 
 ```bash
-bash deploy-fast-webshare.sh
+bash deploy-webshare.sh
 ```
 or
 
 ```bash
-chmod +x deploy-fast-webshare.sh
-./deploy-fast-webshare.sh
+chmod +x deploy-webshare.sh
+./deploy-webshare.sh
 ```
 
 Start the service, run:
