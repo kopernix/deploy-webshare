@@ -28,13 +28,14 @@ chmod +x deploy-fast-webshare.sh
 ```
 
 Start the service, run:
-    
-    docker compose up -d
 
-or 
-    docker-compose up -d
-
-
+```bash    
+docker compose up -d
+```
+or
+```bash
+docker-compose up -d  
+```
 And now!:
 
 - You can see a random username and password
@@ -48,8 +49,10 @@ Change your Caddy config (API are dissabled, you need restart containeer):
 
 Or generate new hashed passwords change your Caddyfile:
 
-  docker run --rm caddy:latest caddy hash-password --plaintext YOUR_PASSWORD
-  docker compose restart
+```bash
+docker run --rm caddy:latest caddy hash-password --plaintext YOUR_PASSWORD
+docker compose restart
+```
 
 EAAAAAAAASY! ;-)
 
