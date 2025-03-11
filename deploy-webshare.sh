@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ==============================================================
-# Server Deployment Script
+# Server Deployment Script v1.0.0
 # 
 # This script automates the deployment of a Caddy server
 # with basic authentication and dynamically generated credentials.
